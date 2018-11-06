@@ -24,9 +24,11 @@ app.use(cors(corsOptions));
 
 const pollController = require('./controllers/pollController');
 const authController = require('./controllers/authController');
+const dataController = require('./controllers/dataController');
 
+app.use('/auth', authController);
 app.use('/api/v1/polls', pollController);
-'
+app.use('/api/v1/data', dataController);
 app.listen(9000, () => {
 	console.log('listening on port 9k');
 });
