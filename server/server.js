@@ -26,7 +26,6 @@ const pollController = require('./controllers/pollController');
 const authController = require('./controllers/authController');
 
 app.use('/api/v1/polls', pollController);
-app.use('/auth', authController);
 '
 app.listen(9000, () => {
 	console.log('listening on port 9k');
