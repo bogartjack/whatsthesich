@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const session = require('express-session');
+const passport = require('./passport');
 
 require('db/db');
 
@@ -21,6 +22,9 @@ const corsOptions = {
 	optionsSuccessStatus: 200
 }
 app.use(cors(corsOptions));
+app.use(passport.initialize());
+app.use(passport.session())
+
 
 const pollController = require('./controllers/pollController');
 const authController = require('./controllers/authController');

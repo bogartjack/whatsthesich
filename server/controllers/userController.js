@@ -38,3 +38,5 @@ router.post('/login', async(req,res)=>{
 		res.send(err);
 	}
 });
+
+router.get('

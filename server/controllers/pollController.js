@@ -1,17 +1,18 @@
 const express = require('express');
 const router = express.Router();
 
-const Poll = require('../models/polls.js');
+const Bit = require('../models/bit.js');
+
 
 router.get('/', async(req,res,next) => {
 	console.log(req.body, ' get all');
 
 	try{
-		const allPolls = await Poll.find();
-
+		const allBits = await Bit.find();
+		await allBits.populate('user');
 		res.json({
 			status: 200,
-			data: allPolls
+			data: allBits
 		});
 	}		
 	catch(err){
@@ -20,13 +21,28 @@ router.get('/', async(req,res,next) => {
 	}		
 });
 
+router.get('/:userId', async (req, res) => {
+	try{
+		const userBits = await Bit.find({user: req.params.userId});
+		res.json({
+			status: 200,
+			data: userBits
+		});
+	}
+	catch(err){
+		console.log(err);
+		res.json(err);
+	}
+});
+
 router.post('/', async (req, res) =>{
 	try{
-		const createdPoll = await Poll.create(req.body);
+		const createdBit = await Bit.create(req.body);
+		
 		console.log(foundPoll.json());
 		res.json({
 			status: 200,
-			data: createdPoll
+			data: createdBit
 		});
 	}
 	catch(err){
@@ -37,10 +53,10 @@ router.post('/', async (req, res) =>{
 
 router.put('/:id', async(req, res) => {
 	try{
-		const updatedPoll = await.findByIdAndUpdate(req.params.id, req.body, {new: true});
+		const updatedBit = await.findByIdAndUpdate(req.params.id, req.body, {new: true});
 		res.json({
 			status: 200,
-			data: updatePoll
+			data: updateBit
 		});
 	}
 	catch(err){
@@ -51,10 +67,10 @@ router.put('/:id', async(req, res) => {
 
 router.delete('/:id', async(req,res) => {
 	try{
-		const deletedPoll = await Poll.findByIdAndRemove(req.params.id);
+		const deletedBit = await Bit.findByIdAndRemove(req.params.id);
 		res.json({
 			status:200,
-			data:deletedPoll
+			data:deletedBit
 		});
 	}
 	catch(err){
