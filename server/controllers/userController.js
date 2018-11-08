@@ -27,9 +27,9 @@ router.post('/register', async (req, res) => {
 	}
 });
 
-router.post('/login', async(req,res)=>{
+router.post('/login', passport.authenticate('local'), async(req,res, next)=>{
 	try{
-		const foundUser = await User.findOne({username: req.body.username});
+		const foundUser = await User.findOne({username: req.user.username});
 		req.session.logged = true;
 		req.session.username = req.body.username;
 	}
@@ -39,4 +39,14 @@ router.post('/login', async(req,res)=>{
 	}
 });
 
-router.get('
+router.post('/logout', (req,res)=>{
+	if (req.user) {
+		req.logout();
+		res.json({message: 'logging out'});
+	}
+	else {
+		res.json({message: 'no user'});
+	}
+});
+
+module.exports = router;

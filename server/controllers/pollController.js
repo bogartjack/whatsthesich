@@ -37,6 +37,7 @@ router.get('/:userId', async (req, res) => {
 
 router.post('/', async (req, res) =>{
 	try{
+		
 		const createdBit = await Bit.create(req.body);
 		
 		console.log(foundPoll.json());
@@ -78,3 +79,5 @@ router.delete('/:id', async(req,res) => {
 		res.json(err);
 	}
 });	
+
+module.exports = router
