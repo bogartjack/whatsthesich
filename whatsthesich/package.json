@@ -1,0 +1,43 @@
+{
+  "name": "votingapp",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": "8.9.4"
+  },
+  "dependencies": {
+    "axios": "0.17.1",
+    "bcryptjs": "2.4.3",
+    "body-parser": "1.18.2",
+    "chart.js": "2.7.1",
+    "classnames": "2.2.5",
+    "concurrently": "3.5.1",
+    "dotenv": "^5.0.0",
+    "jsonwebtoken": "8.1.1",
+    "jwt-decode": "2.2.0",
+    "lodash": "4.17.5",
+    "react": "16.2.0",
+    "react-chartjs-2": "2.7.0",
+    "react-dom": "16.2.0",
+    "react-redux": "5.0.6",
+    "react-router-dom": "4.2.2",
+    "react-scripts": "1.1.0",
+    "redux": "3.7.2",
+    "redux-devtools-extension": "2.13.2",
+    "redux-thunk": "2.2.0",
+    "request-ip": "^2.0.2",
+    "validator": "9.4.0"
+  },
+  "scripts": {
+    "dev": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "postinstall": "cd backend && yarn",
+    "start": "concurrently \"cd backend && yarn start\" \"cd ./ && yarn dev \" ",
+    "build:prod": "concurrently \"cd ./ && yarn build\" \"cd backend && yarn build\"",
+    "start:prod": "cd backend && yarn start:prod",
+    "heroku-postbuild": "yarn build:prod"
+  },
+  "proxy": "http://localhost:8080"
+}

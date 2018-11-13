@@ -1,0 +1,53 @@
+nav.navbar-dark .navbar-nav .nav-link.disabled {
+  color: #fff;
+}
+
+.alert {
+  margin-top: 5px
+}
+
+#listPage{
+  background: #d3d3d3;
+  margin-top: 10px;
+  border-radius: 20px;
+}
+
+.list-header {
+  font-size: 3.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  padding: 40px 0 10px 0;
+  text-align: center;
+}
+
+.lead {
+  font-size: 2rem;
+  font-weight: 300;
+  text-align: center;
+}
+
+.lb-lg {
+  font-size: 1.25rem
+}
+
+.lb-slg {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+ul.list-group {
+  padding: 0 15% 10% 15%;
+}
+
+.list-group li{
+  cursor: pointer;
+}
+
+form.container-fluid {
+  padding: 0 25% 10% 25%;
+}
+
+#twitterbutton{
+  color: #fff;
+  text-decoration: none;
+}
